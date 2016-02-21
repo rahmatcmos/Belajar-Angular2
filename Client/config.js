@@ -28,6 +28,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
+    "rxjs": "npm:rxjs@5.0.0-beta.2",
     "ts": "github:frankwallis/plugin-typescript@3.0.3",
     "typescript": "npm:typescript@1.8.0",
     "zone.js": "npm:zone.js@0.5.15",
