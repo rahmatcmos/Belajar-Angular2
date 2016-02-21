@@ -24,6 +24,9 @@ System.config({
 
   map: {
     "angular2": "npm:angular2@2.0.0-beta.7",
+    "bootstrap": "github:twbs/bootstrap@3.3.6",
+    "css": "github:systemjs/plugin-css@0.1.20",
+    "font-awesome": "npm:font-awesome@4.5.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
     "ts": "github:frankwallis/plugin-typescript@3.0.3",
     "typescript": "npm:typescript@1.8.0",
@@ -63,6 +66,9 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "github:twbs/bootstrap@3.3.6": {
+      "jquery": "github:components/jquery@2.2.0"
     },
     "npm:angular2@2.0.0-beta.7": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
@@ -220,6 +226,9 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0"
+    },
+    "npm:font-awesome@4.5.0": {
+      "css": "github:systemjs/plugin-css@0.1.20"
     },
     "npm:hash.js@1.0.3": {
       "inherits": "npm:inherits@2.0.1"
