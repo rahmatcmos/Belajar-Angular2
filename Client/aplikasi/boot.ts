@@ -1,6 +1,9 @@
 import 'reflect-metadata';
 import 'zone.js';
 
+import 'bootstrap/css/bootstrap.min.css!';
+import 'font-awesome/css/font-awesome.min.css!';
+
 import {bootstrap} from 'angular2/platform/browser';
 
 import {HTTP_PROVIDERS} from 'angular2/http';
