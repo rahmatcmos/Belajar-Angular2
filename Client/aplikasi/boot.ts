@@ -13,8 +13,10 @@ import {provide}           from 'angular2/core';
 import {LocationStrategy, HashLocationStrategy} from 'angular2/router';
 
 import {AplikasiComponent} from './aplikasi';
+import {BarangService} from './barang/barang.service';
 
 bootstrap(AplikasiComponent, [
+    BarangService,
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
     provide(LocationStrategy, { useClass: HashLocationStrategy })
