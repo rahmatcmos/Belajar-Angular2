@@ -4,4 +4,12 @@ import {Component} from 'angular2/core';
     selector: 'halo',
     templateUrl: './aplikasi/halo/halo.component.html'
 })
-export class HaloComponent { }
+export class HaloComponent {
+
+    public nama: string;
+
+    updateInputNama(nama: string) {
+        this.nama = nama;
+    }
+
+}

@@ -25,6 +25,7 @@ System.config({
   map: {
     "angular2": "npm:angular2@2.0.0-beta.7",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
+    "bootstrap-less": "github:distros/bootstrap-less@3.3.9",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
@@ -32,6 +33,9 @@ System.config({
     "ts": "github:frankwallis/plugin-typescript@3.0.3",
     "typescript": "npm:typescript@1.8.0",
     "zone.js": "npm:zone.js@0.5.15",
+    "github:distros/bootstrap-less@3.3.9": {
+      "jquery": "github:components/jquery@2.2.1"
+    },
     "github:frankwallis/plugin-typescript@3.0.3": {
       "typescript": "npm:typescript@1.9.0-dev.20160214"
     },
@@ -69,7 +73,7 @@ System.config({
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "github:components/jquery@2.2.0"
+      "jquery": "github:components/jquery@2.2.1"
     },
     "npm:angular2@2.0.0-beta.7": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
