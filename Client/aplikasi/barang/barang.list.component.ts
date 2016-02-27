@@ -10,7 +10,9 @@ import {BarangService} from './barang.service';
     templateUrl: './aplikasi/barang/barang.list.component.html'
 })
 export class BarangListComponent {
-    daftarBarang: any;
+
+    public daftarBarang: any;
+    public inputDaftarBarang = {};
 
     constructor(private bs: BarangService) {
         this.loadBarang();
@@ -23,6 +25,14 @@ export class BarangListComponent {
             (data) => { this.daftarBarang = data },
             (err) => { console.log(err) },
             () => { console.log("request selesai") }
+        );
+    }
+
+    simpanDaftarBarang(barang: Array<any>) {
+        this.bs.simpanDaftarBarang(barang).subscribe(
+            (data) => { console.log(data.json) },
+            (err) => { console.log(err) },
+            () => { this.loadBarang() }
         );
     }
 }
