@@ -22,6 +22,7 @@ app.use morgan('combined',
   stream: Logger.stream
 )
 app.use methodOverride()
+app.use bodyParser.json()
 app.use bodyParser.urlencoded(
   extended: true
 )
