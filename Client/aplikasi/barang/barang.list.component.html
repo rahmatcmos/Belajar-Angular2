@@ -1,28 +1,37 @@
-<div *ngIf="!daftarBarang">
+<div *ngIf="!_daftarBarang">
   ...loading...
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#barang">
+<button (click)="tambahDaftarBarang()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#barang">
   Tambah Barang
 </button>
 
 <p></p>
 
-<table *ngIf="daftarBarang" class="table table-hover table-striped table-bordered table-responsive">
+<table *ngIf="_daftarBarang" class="table table-hover table-striped table-bordered table-responsive">
   <thead>
     <tr>
       <th>ID Barang</th>
       <th>Nama Barang</th>
       <th>Jenis Barang</th>
       <th>Tanggal Kadaluarsa</th>
+      <th>Aksi</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="#b of daftarBarang">
+    <tr *ngFor="#b of _daftarBarang">
       <td>{{b.idBarang}}</td>
       <td>{{b.namaBarang}}</td>
       <td>{{b.jenisBarang}}</td>
       <td>{{b.tanggalKadaluarsa}}</td>
+      <td>
+        <button (click)="editDaftarBarang(b)" type="button" class="btn btn-success" data-toggle="modal" data-target="#barang">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </button>
+        <button (click)="hapusDaftarBarang(b.idBarang)" type="button" class="btn btn-danger">
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -34,31 +43,38 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Tambah Barang</h4>
+        <h4 *ngIf="_enable == false" class="modal-title" id="myModalLabel">Tambah Barang</h4>
+        <h4 *ngIf="_enable == true" class="modal-title" id="myModalLabel">Edit Barang</h4>
       </div>
       <div class="modal-body">
         <form>
 
+          <div *ngIf="_enable == true" class="form-group">
+            <label>ID Barang</label>
+            <input type="text" class="form-control" placeholder="ID Barang" [(ngModel)]="_inputDaftarBarang.idBarang" disabled>
+          </div>
+
           <div class="form-group">
             <label>Nama Barang</label>
-            <input type="text" class="form-control" placeholder="Nama Barang" [(ngModel)]="inputDaftarBarang.namaBarang">
+            <input type="text" class="form-control" placeholder="Nama Barang" [(ngModel)]="_inputDaftarBarang.namaBarang">
           </div>
 
           <div class="form-group">
             <label>Jenis Barang</label>
-            <input type="text" class="form-control" placeholder="Jenis Barang" [(ngModel)]="inputDaftarBarang.jenisBarang">
+            <input type="text" class="form-control" placeholder="Jenis Barang" [(ngModel)]="_inputDaftarBarang.jenisBarang">
           </div>
 
           <div class="form-group">
             <label>Tanggal Kadaluarsa</label>
-            <input type="text" class="form-control" placeholder="Tanggal Kadaluarsa" [(ngModel)]="inputDaftarBarang.tanggalKadaluarsa">
+            <input type="text" class="form-control" placeholder="Tanggal Kadaluarsa" [(ngModel)]="_inputDaftarBarang.tanggalKadaluarsa">
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-warning" data-dismiss="modal">Batal</button>
-        <button type="button" (click)="simpanDaftarBarang(inputDaftarBarang)" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+        <button *ngIf="_enable == false" type="button" (click)="simpanDaftarBarang(_inputDaftarBarang)" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+        <button *ngIf="_enable == true" type="button" (click)="updateDaftarBarang(_inputDaftarBarang)" class="btn btn-success" data-dismiss="modal">Update</button>
       </div>
     </div>
   </div>
