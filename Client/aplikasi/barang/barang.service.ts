@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class BarangService {
 
-    _serverUrl = '/barang';
+    _serverUrl = '/api/barang';
 
     constructor(private http: Http) { }
 
