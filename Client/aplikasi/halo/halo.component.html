@@ -1,1 +1,8 @@
-helo word
+<h1>Hello {{nama}}</h1>
+<h2>Kelas {{kelas}}</h2>
+
+<input #user class="form-control" type="text" (keyup)="updateInputNama(user.value)" placeholder="Masukkan Nama Anda">
+<p>
+    
+</p>
+<input class="form-control" type="text" [(ngModel)]="kelas" placeholder="Masukkan Kelas Anda">
