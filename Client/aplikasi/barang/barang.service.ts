@@ -6,53 +6,53 @@ import 'rxjs/Rx';
 @Injectable()
 export class BarangService {
 
-    _serverUrl = '/api/barang';
+    _serverUrl: string = '/api/barang';
 
-    constructor(private http: Http) { }
+    constructor(private _http: Http) { }
 
     getDaftarBarang() {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+        let _headers = new Headers();
+        _headers.append('Content-Type', 'application/json');
 
-        return this.http.get(this._serverUrl, {
-            headers: headers
+        return this._http.get(this._serverUrl, {
+            headers: _headers
         }).map((res: Response) => res.json());
     }
 
     simpanDaftarBarang(barang: any) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+        let _headers = new Headers();
+        _headers.append('Content-Type', 'application/json');
 
-        return this.http.post(this._serverUrl,
+        return this._http.post(this._serverUrl,
             JSON.stringify({
                 'namaBarang': barang.namaBarang,
                 'jenisBarang': barang.jenisBarang,
                 'tanggalKadaluarsa': barang.tanggalKadaluarsa
             }), {
-                headers: headers
+                headers: _headers
             });
     }
 
-    editDaftarBarang(idBarang: string, barang: any) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+    updateDaftarBarang(barang: any) {
+        let _headers = new Headers();
+        _headers.append('Content-Type', 'application/json');
 
-        return this.http.put(this._serverUrl + '/' + idBarang,
+        return this._http.put(this._serverUrl + '/' + barang.idBarang,
             JSON.stringify({
                 'namaBarang': barang.namaBarang,
                 'jenisBarang': barang.jenisBarang,
                 'tanggalKadaluarsa': barang.tanggalKadaluarsa
             }), {
-                headers: headers
+                headers: _headers
             });
     }
 
     hapusDaftarBarang(idBarang: string) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+        let _headers = new Headers();
+        _headers.append('Content-Type', 'application/json');
 
-        return this.http.delete(this._serverUrl + '/' + idBarang, {
-            headers: headers
+        return this._http.delete(this._serverUrl + '/' + idBarang, {
+            headers: _headers
         });
     }
 }
