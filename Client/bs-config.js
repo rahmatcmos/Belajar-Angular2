@@ -3,7 +3,7 @@ var historyFallback = require('connect-history-api-fallback');
 var log = require('connect-logger');
 
 var proxy = proxyMiddleware('/api', {
-  target: 'http://localhost:1337/'
+  target: 'http://localhost:3000/'
 });
 
 module.exports = {
