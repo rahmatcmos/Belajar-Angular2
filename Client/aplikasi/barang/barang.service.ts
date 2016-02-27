@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Http, Headers, Response} from 'angular2/http';
 
 import 'rxjs/Rx';
 
@@ -11,18 +11,48 @@ export class BarangService {
     constructor(private http: Http) { }
 
     getDaftarBarang() {
-        return this.http.get(this._serverUrl).map((res: Response) => res.json());
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.get(this._serverUrl, {
+            headers: headers
+        }).map((res: Response) => res.json());
     }
 
     simpanDaftarBarang(barang: any) {
-        return this.http.post(this._serverUrl, JSON.stringify(barang));
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.post(this._serverUrl,
+            JSON.stringify({
+                'namaBarang': barang.namaBarang,
+                'jenisBarang': barang.jenisBarang,
+                'tanggalKadaluarsa': barang.tanggalKadaluarsa
+            }), {
+                headers: headers
+            });
     }
 
     editDaftarBarang(idBarang: string, barang: any) {
-        return this.http.put(this._serverUrl + '/' + idBarang, barang);
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.put(this._serverUrl + '/' + idBarang,
+            JSON.stringify({
+                'namaBarang': barang.namaBarang,
+                'jenisBarang': barang.jenisBarang,
+                'tanggalKadaluarsa': barang.tanggalKadaluarsa
+            }), {
+                headers: headers
+            });
     }
 
     hapusDaftarBarang(idBarang: string) {
-        return this.http.delete(this._serverUrl + '/' + idBarang);
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.delete(this._serverUrl + '/' + idBarang, {
+            headers: headers
+        });
     }
 }
