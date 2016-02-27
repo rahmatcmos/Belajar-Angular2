@@ -13,4 +13,16 @@ export class BarangService {
     getDaftarBarang() {
         return this.http.get(this._serverUrl).map((res: Response) => res.json());
     }
+
+    simpanDaftarBarang(barang: any) {
+        return this.http.post(this._serverUrl, JSON.stringify(barang));
+    }
+
+    editDaftarBarang(idBarang: string, barang: any) {
+        return this.http.put(this._serverUrl + '/' + idBarang, barang);
+    }
+
+    hapusDaftarBarang(idBarang: string) {
+        return this.http.delete(this._serverUrl + '/' + idBarang);
+    }
 }
